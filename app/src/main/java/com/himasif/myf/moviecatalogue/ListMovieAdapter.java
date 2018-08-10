@@ -24,6 +24,7 @@ public class ListMovieAdapter extends BaseAdapter{
 
     public ListMovieAdapter(Context context) {
         this.context = context;
+        layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override

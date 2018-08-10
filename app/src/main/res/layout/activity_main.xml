@@ -20,22 +20,24 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.2" />
 
-        <ImageButton
+        <Button
             android:id="@+id/btn_search"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.8"
-            android:background="@null"
+            android:textColor="#fff"
+            android:background="@color/colorAccent"
+            android:text="Cari"
             android:src="@drawable/ic_search_black_24dp" />
     </LinearLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_search_result"
+    <ListView
+        android:id="@+id/lv_search_result"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/search_layout">
 
-    </android.support.v7.widget.RecyclerView>
+    </ListView>
 
 
 </RelativeLayout>
