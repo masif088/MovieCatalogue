@@ -1,4 +1,4 @@
-package com.himasif.myf.moviecatalogue;
+package com.himasif.myf.moviecatalogue.Model;
 
 import android.content.AsyncTaskLoader;
 import android.content.Context;
@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 import cz.msebera.android.httpclient.Header;
 
-public class DownloadResultAsyncTaskLoader extends AsyncTaskLoader<ArrayList<Movie>>{
+public class DownloadResultAsyncTaskLoader extends AsyncTaskLoader<ArrayList<Movie>> {
 
     private static final String TAG = DownloadResultAsyncTaskLoader.class.getSimpleName();
     private String input;
@@ -32,7 +32,7 @@ public class DownloadResultAsyncTaskLoader extends AsyncTaskLoader<ArrayList<Mov
 
     @Override
     protected void onStartLoading() {
-        if(takeContentChanged()) forceLoad();
+        if (takeContentChanged()) forceLoad();
         else if (hasResult) deliverResult(movieArrayList);
     }
 
@@ -47,7 +47,7 @@ public class DownloadResultAsyncTaskLoader extends AsyncTaskLoader<ArrayList<Mov
     protected void onReset() {
         super.onReset();
         onStopLoading();
-        if(hasResult){
+        if (hasResult) {
             onReleaseResources(movieArrayList);
             movieArrayList = null;
             hasResult = false;
@@ -73,7 +73,7 @@ public class DownloadResultAsyncTaskLoader extends AsyncTaskLoader<ArrayList<Mov
                     String result = new String(responseBody);
                     JSONObject jsonObject = new JSONObject(result);
                     JSONArray list = jsonObject.getJSONArray("results");
-                    for(int i=0; i<list.length(); i++){
+                    for (int i = 0; i < list.length(); i++) {
                         JSONObject movieResponse = list.getJSONObject(i);
                         Movie movie = new Movie(movieResponse);
                         movies.add(movie);

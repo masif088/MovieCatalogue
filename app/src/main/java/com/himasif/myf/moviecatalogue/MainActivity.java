@@ -5,26 +5,22 @@ import android.content.Intent;
 import android.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
-import com.himasif.myf.moviecatalogue.Build.Config;
+import com.himasif.myf.moviecatalogue.Adapter.ListMovieAdapter;
+import com.himasif.myf.moviecatalogue.Model.DownloadResultAsyncTaskLoader;
+import com.himasif.myf.moviecatalogue.Model.Movie;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, LoaderManager.LoaderCallbacks<ArrayList<Movie>>, AdapterView.OnItemClickListener {
-    
+
     private static final String TAG = MainActivity.class.getSimpleName();
 
     private Button btnSearch;
@@ -64,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 progressBar.setVisibility(View.VISIBLE);
                 Log.d(TAG, "onClick: Clicked");
                 String input = edtSearch.getText().toString();
-                if(!input.equals("")){
+                if (!input.equals("")) {
                     Bundle bundle = new Bundle();
                     bundle.putString(EXTRA_INPUT, input);
                     getLoaderManager().restartLoader(0, bundle, MainActivity.this);
@@ -77,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public Loader<ArrayList<Movie>> onCreateLoader(int i, Bundle bundle) {
         String input = "";
-        if(bundle != null){
+        if (bundle != null) {
             input = bundle.getString(EXTRA_INPUT);
         }
         return new DownloadResultAsyncTaskLoader(this, input);
@@ -97,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         Intent intent = new Intent(MainActivity.this, DetailActivity.class);
-        intent.putExtra(DetailActivity.EXTRA_MOVIE, ((Movie)adapter.getItem(i)));
+        intent.putExtra(DetailActivity.EXTRA_MOVIE, ((Movie) adapter.getItem(i)));
         startActivity(intent);
     }
 }

@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.himasif.myf.moviecatalogue.Build.Config;
+import com.himasif.myf.moviecatalogue.Model.Movie;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -27,19 +28,21 @@ public class DetailActivity extends AppCompatActivity {
         tvReleaseDate = (TextView) findViewById(R.id.tv_releaseDate_detail);
         tvOriLang = (TextView) findViewById(R.id.tv_orilang_detail);
         tvOverview = (TextView) findViewById(R.id.tv_overview_detail);
-
         movie = (Movie) getIntent().getSerializableExtra(EXTRA_MOVIE);
 
+        setAll();
+    }
+
+    private void setAll() {
+        Log.d(TAG, "onCreate: Poster URL Detail : " + Config.POSTER_URL_W780 + movie.getPosterPath());
         Glide.with(this)
                 .load(Config.POSTER_URL_W780 + movie.getPosterPath())
                 .fitCenter()
                 .into(imgPoster);
-        Log.d(TAG, "onCreate: Poster URL Detail : " + Config.POSTER_URL_W780 + movie.getPosterPath());
         tvTitle.setText(movie.getTitle());
         tvRating.setText("Rating : " + movie.getVoteAvg());
         tvReleaseDate.setText("Release on : " + movie.getReleaseDate());
         tvOriLang.setText("Language : " + movie.getOriginalLanguage());
         tvOverview.setText(movie.getOverview());
-
     }
 }

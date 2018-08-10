@@ -1,8 +1,6 @@
-package com.himasif.myf.moviecatalogue;
+package com.himasif.myf.moviecatalogue.Model;
 
 import android.util.Log;
-
-import com.himasif.myf.moviecatalogue.Build.Config;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -12,7 +10,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Movie implements Serializable{
+public class Movie implements Serializable {
 
     private static final String TAG = Movie.class.getSimpleName();
     private String title;
