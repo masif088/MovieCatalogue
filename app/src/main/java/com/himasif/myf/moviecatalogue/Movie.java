@@ -7,24 +7,29 @@ import com.himasif.myf.moviecatalogue.Build.Config;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Movie {
+public class Movie implements Serializable{
 
     private static final String TAG = Movie.class.getSimpleName();
     private String title;
     private String overview;
     private String posterPath;
     private String releaseDate;
+    private int voteAvg;
+    private String originalLanguage;
 
     public Movie(JSONObject jsonObject) {
 
         try {
             this.title = jsonObject.getString("title");
             this.overview = jsonObject.getString("overview");
-            this.posterPath = Config.POSTER_URL + jsonObject.getString("poster_path");
+            this.voteAvg = jsonObject.getInt("vote_average");
+            this.originalLanguage = jsonObject.getString("original_language");
+            this.posterPath = jsonObject.getString("poster_path");
             String dateRaw = jsonObject.getString("release_date");
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
             try {
@@ -59,4 +64,11 @@ public class Movie {
         return releaseDate;
     }
 
+    public int getVoteAvg() {
+        return voteAvg;
+    }
+
+    public String getOriginalLanguage() {
+        return originalLanguage;
+    }
 }

@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.himasif.myf.moviecatalogue.Build.Config;
 
 import java.util.ArrayList;
 
@@ -62,7 +63,7 @@ public class ListMovieAdapter extends BaseAdapter{
         holder.tvOverview.setText(movieArrayList.get(position).getOverview());
         holder.tvReleaseDate.setText(movieArrayList.get(position).getReleaseDate());
         Glide.with(context)
-                .load(movieArrayList.get(position).getPosterPath())
+                .load(Config.POSTER_URL_W185 + movieArrayList.get(position).getPosterPath())
                 .override(70, 100)
                 .crossFade()
                 .into(holder.imgPoster);
@@ -76,10 +77,6 @@ public class ListMovieAdapter extends BaseAdapter{
         TextView tvTitle;
         TextView tvOverview;
         TextView tvReleaseDate;
-    }
-
-    public void addMovie(final Movie movie){
-        movieArrayList.add(movie);
     }
 
     public void setMovieArrayList(ArrayList<Movie> movieArrayList) {

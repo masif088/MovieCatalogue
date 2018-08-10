@@ -1,6 +1,7 @@
 package com.himasif.myf.moviecatalogue;
 
 import android.app.LoaderManager;
+import android.content.Intent;
 import android.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,11 +9,13 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.himasif.myf.moviecatalogue.Build.Config;
 
@@ -20,7 +23,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, LoaderManager.LoaderCallbacks<ArrayList<Movie>> {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, LoaderManager.LoaderCallbacks<ArrayList<Movie>>, AdapterView.OnItemClickListener {
     
     private static final String TAG = MainActivity.class.getSimpleName();
 
@@ -30,7 +33,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ProgressBar progressBar;
     private ListMovieAdapter adapter;
     public static final String EXTRA_INPUT = "extra_input";
-    private static final int MAX_COUNT = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         btnSearch.setOnClickListener(this);
         lvSearchResult.setAdapter(adapter);
+        lvSearchResult.setOnItemClickListener(this);
         edtSearch.clearFocus();
         String input = edtSearch.getText().toString();
         Bundle bundle = new Bundle();
@@ -67,7 +70,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     getLoaderManager().restartLoader(0, bundle, MainActivity.this);
                     edtSearch.clearFocus();
                 }
-
                 break;
         }
     }
@@ -90,5 +92,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onLoaderReset(Loader<ArrayList<Movie>> loader) {
         adapter.setMovieArrayList(null);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+        intent.putExtra(DetailActivity.EXTRA_MOVIE, ((Movie)adapter.getItem(i)));
+        startActivity(intent);
     }
 }
