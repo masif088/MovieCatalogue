@@ -14,30 +14,45 @@
         android:layout_marginBottom="@dimen/vertical_margin_layout"
         android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/edt_search"
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.2" />
+            android:layout_weight="0.2"
+            android:backgroundTint="@color/colorAccent"
+            android:textColorHint="@color/colorAccent"
+            app:passwordToggleEnabled="true">
+
+            <EditText
+                android:id="@+id/edt_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Movies Title" />
+        </android.support.design.widget.TextInputLayout>
 
         <Button
             android:id="@+id/btn_search"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.8"
-            android:textColor="#fff"
-            android:background="@color/colorAccent"
+            android:background="@drawable/button"
+            android:src="@drawable/ic_search_black_24dp"
             android:text="Cari"
-            android:src="@drawable/ic_search_black_24dp" />
+            android:textColor="#fff" />
     </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:layout_below="@id/search_layout"
+        android:layout_centerHorizontal="true"/>
 
     <ListView
         android:id="@+id/lv_search_result"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/search_layout">
-
-    </ListView>
+        android:layout_below="@id/search_layout"></ListView>
 
 
 </RelativeLayout>

@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import com.himasif.myf.moviecatalogue.Build.Config;
 
@@ -26,9 +27,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button btnSearch;
     private EditText edtSearch;
     private ListView lvSearchResult;
-    private ArrayList<Movie> movies;
+    private ProgressBar progressBar;
     private ListMovieAdapter adapter;
     public static final String EXTRA_INPUT = "extra_input";
+    private static final int MAX_COUNT = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,10 +42,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         lvSearchResult = (ListView) findViewById(R.id.lv_search_result);
         btnSearch = (Button) findViewById(R.id.btn_search);
         edtSearch = (EditText) findViewById(R.id.edt_search);
+        progressBar = (ProgressBar) findViewById(R.id.progress_bar);
+        progressBar.setVisibility(View.GONE);
 
         btnSearch.setOnClickListener(this);
-        movies = new ArrayList<Movie>();
         lvSearchResult.setAdapter(adapter);
+        edtSearch.clearFocus();
         String input = edtSearch.getText().toString();
         Bundle bundle = new Bundle();
         bundle.putString(EXTRA_INPUT, input);
@@ -54,13 +58,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_search:
+                progressBar.setVisibility(View.VISIBLE);
                 Log.d(TAG, "onClick: Clicked");
                 String input = edtSearch.getText().toString();
                 if(!input.equals("")){
                     Bundle bundle = new Bundle();
                     bundle.putString(EXTRA_INPUT, input);
                     getLoaderManager().restartLoader(0, bundle, MainActivity.this);
+                    edtSearch.clearFocus();
                 }
+
                 break;
         }
     }
@@ -77,6 +84,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onLoadFinished(Loader<ArrayList<Movie>> loader, ArrayList<Movie> movies) {
         adapter.setMovieArrayList(movies);
+        progressBar.setVisibility(View.GONE);
     }
 
     @Override
