@@ -1,6 +1,7 @@
 package com.himasif.myf.moviecatalogue.Adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,6 +59,7 @@ public class ListMovieAdapter extends BaseAdapter{
         else{
             holder = (ViewHolder) view.getTag();
         }
+        Log.d(TAG, "getView: " + Config.POSTER_URL_W185 + movieArrayList.get(position).getPosterPath());
         holder.tvTitle.setText(movieArrayList.get(position).getTitle());
         holder.tvOverview.setText(movieArrayList.get(position).getOverview());
         holder.tvReleaseDate.setText(movieArrayList.get(position).getReleaseDate());
