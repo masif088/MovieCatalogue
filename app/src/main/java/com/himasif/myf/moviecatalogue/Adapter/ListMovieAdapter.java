@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.himasif.myf.moviecatalogue.Build.Config;
 import com.himasif.myf.moviecatalogue.Model.Movie;
 import com.himasif.myf.moviecatalogue.R;
 
@@ -19,6 +18,7 @@ import java.util.ArrayList;
 public class ListMovieAdapter extends BaseAdapter{
 
     private static final String TAG = ListMovieAdapter.class.getSimpleName();
+    public static final String POSTER_URL_W185 = "http://image.tmdb.org/t/p/w185"; // image for list
     private Context context;
     private LayoutInflater layoutInflater;
     private ArrayList<Movie> movieArrayList;
@@ -59,12 +59,12 @@ public class ListMovieAdapter extends BaseAdapter{
         else{
             holder = (ViewHolder) view.getTag();
         }
-        Log.d(TAG, "getView: " + Config.POSTER_URL_W185 + movieArrayList.get(position).getPosterPath());
+        Log.d(TAG, "getView: " + POSTER_URL_W185 + movieArrayList.get(position).getPosterPath());
         holder.tvTitle.setText(movieArrayList.get(position).getTitle());
         holder.tvOverview.setText(movieArrayList.get(position).getOverview());
         holder.tvReleaseDate.setText(movieArrayList.get(position).getReleaseDate());
         Glide.with(context)
-                .load(Config.POSTER_URL_W185 + movieArrayList.get(position).getPosterPath())
+                .load(POSTER_URL_W185 + movieArrayList.get(position).getPosterPath())
                 .override(70, 100)
                 .crossFade()
                 .into(holder.imgPoster);
@@ -83,9 +83,5 @@ public class ListMovieAdapter extends BaseAdapter{
     public void setMovieArrayList(ArrayList<Movie> movieArrayList) {
         this.movieArrayList = movieArrayList;
         notifyDataSetChanged();
-    }
-
-    public void clearData(){
-        movieArrayList.clear();
     }
 }

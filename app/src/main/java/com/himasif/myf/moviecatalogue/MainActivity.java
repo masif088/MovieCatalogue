@@ -19,14 +19,17 @@ import com.himasif.myf.moviecatalogue.Model.Movie;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, LoaderManager.LoaderCallbacks<ArrayList<Movie>>, AdapterView.OnItemClickListener {
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
-    private Button btnSearch;
-    private EditText edtSearch;
-    private ListView lvSearchResult;
-    private ProgressBar progressBar;
+    @BindView(R.id.btn_search) Button btnSearch;
+    @BindView(R.id.edt_search) EditText edtSearch;
+    @BindView(R.id.lv_search_result) ListView lvSearchResult;
+    @BindView(R.id.progress_bar) ProgressBar progressBar;
     private ListMovieAdapter adapter;
     public static final String EXTRA_INPUT = "extra_input";
 
@@ -34,13 +37,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
 
         adapter = new ListMovieAdapter(this);
         adapter.notifyDataSetChanged();
-        lvSearchResult = (ListView) findViewById(R.id.lv_search_result);
-        btnSearch = (Button) findViewById(R.id.btn_search);
-        edtSearch = (EditText) findViewById(R.id.edt_search);
-        progressBar = (ProgressBar) findViewById(R.id.progress_bar);
         progressBar.setVisibility(View.GONE);
 
         btnSearch.setOnClickListener(this);
