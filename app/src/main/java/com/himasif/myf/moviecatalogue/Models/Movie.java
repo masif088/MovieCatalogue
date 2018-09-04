@@ -1,4 +1,4 @@
-package com.himasif.myf.moviecatalogue.Model;
+package com.himasif.myf.moviecatalogue.Models;
 
 import android.util.Log;
 

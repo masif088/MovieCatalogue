@@ -1,4 +1,4 @@
-package com.himasif.myf.moviecatalogue.Adapter;
+package com.himasif.myf.moviecatalogue.Adapters;
 
 import android.content.Context;
 import android.util.Log;
@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.himasif.myf.moviecatalogue.Model.Movie;
+import com.himasif.myf.moviecatalogue.Models.Movie;
 import com.himasif.myf.moviecatalogue.R;
 
 import java.util.ArrayList;

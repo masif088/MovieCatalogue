@@ -7,7 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.himasif.myf.moviecatalogue.Model.Movie;
+import com.himasif.myf.moviecatalogue.Models.Movie;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
