@@ -18,6 +18,7 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 
 import com.himasif.myf.moviecatalogue.Adapters.ListMovieAdapter;
+import com.himasif.myf.moviecatalogue.BuildConfig;
 import com.himasif.myf.moviecatalogue.DetailActivity;
 import com.himasif.myf.moviecatalogue.Models.DownloadResultAsyncTaskLoader;
 import com.himasif.myf.moviecatalogue.Models.Movie;
@@ -47,6 +48,8 @@ public class SearchFragment extends Fragment implements View.OnClickListener, an
     public static final String EXTRA_INPUT = "extra_input";
     private Context mContext;
     private static final String TAG = SearchFragment.class.getSimpleName();
+    public static final String SEARCH_URL = "https://api.themoviedb.org/3/search/movie?api_key=" +
+            BuildConfig.API_KEY + "&language=en-US&query=";
 
     public SearchFragment() {
         // Required empty public constructor
@@ -82,7 +85,7 @@ public class SearchFragment extends Fragment implements View.OnClickListener, an
         if (bundle != null) {
             input = bundle.getString(EXTRA_INPUT);
         }
-        return new DownloadResultAsyncTaskLoader(mContext, input);
+        return new DownloadResultAsyncTaskLoader(mContext, input, SEARCH_URL);
     }
 
     @Override

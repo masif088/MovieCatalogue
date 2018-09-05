@@ -19,16 +19,16 @@ import cz.msebera.android.httpclient.Header;
 public class DownloadResultAsyncTaskLoader extends AsyncTaskLoader<ArrayList<Movie>> {
 
     private static final String TAG = DownloadResultAsyncTaskLoader.class.getSimpleName();
-    public static final String SEARCH_URL = "https://api.themoviedb.org/3/search/movie?api_key=" +
-            BuildConfig.API_KEY + "&language=en-US&query=";
+    private String URL;
     private String input;
     private boolean hasResult = false;
     private ArrayList<Movie> movieArrayList;
 
-    public DownloadResultAsyncTaskLoader(Context context, String input) {
+    public DownloadResultAsyncTaskLoader(Context context, String input, String URL) {
         super(context);
         onContentChanged();
         this.input = input;
+        this.URL = URL;
         Log.d(TAG, "DownloadResultAsyncTaskLoader: Constructor");
     }
 
@@ -64,7 +64,7 @@ public class DownloadResultAsyncTaskLoader extends AsyncTaskLoader<ArrayList<Mov
     public ArrayList<Movie> loadInBackground() {
         SyncHttpClient syncHttpClient = new SyncHttpClient();
         final ArrayList<Movie> movies = new ArrayList<Movie>();
-        String url = SEARCH_URL + input;
+        String url = URL + input;
         Log.d(TAG, "loadInBackground: URL : " + url);
 
         syncHttpClient.get(url, new AsyncHttpResponseHandler() {

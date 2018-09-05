@@ -15,7 +15,7 @@ import butterknife.ButterKnife;
 public class DetailActivity extends AppCompatActivity {
 
     private static final String TAG = DetailActivity.class.getSimpleName();
-    public static final String POSTER_URL_W780 = "http://image.tmdb.org/t/p/w500"; // image for details
+    public static final String POSTER_URL_W500 = "http://image.tmdb.org/t/p/w500"; // image for details
     public static final String EXTRA_MOVIE = "extra_movie";
     private Movie movie;
     @BindView(R.id.img_poster_detail) ImageView imgPoster;
@@ -36,9 +36,9 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void setAll() {
-        Log.d(TAG, "onCreate: Poster URL Detail : " + POSTER_URL_W780 + movie.getPosterPath());
+        Log.d(TAG, "onCreate: Poster URL Detail : " + POSTER_URL_W500 + movie.getPosterPath());
         Glide.with(this)
-                .load(POSTER_URL_W780 + movie.getPosterPath())
+                .load(POSTER_URL_W500 + movie.getPosterPath())
                 .fitCenter()
                 .into(imgPoster);
         tvTitle.setText(movie.getTitle());
