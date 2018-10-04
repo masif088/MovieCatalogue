@@ -25,4 +25,7 @@
     <string name="detail_rating">Rating : </string>
 
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, ius ad deleniti salutandi, pro et alterum labores molestiae, id quo appareat interesset. In qui graeci voluptua. An mei iudico quaestio, etiam dissentiet ea sed. Aeque elitr at pro, invidunt constituto mei et. Vis ex nostrud disputationi.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

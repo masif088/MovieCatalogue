@@ -3,6 +3,8 @@
     package="com.himasif.myf.moviecatalogue">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <permission android:name="com.himasif.myf.moviecatalogue.READ_DATABASE" android:protectionLevel="normal"/>
+    <permission android:name="com.himasif.myf.moviecatalogue.WRITE_DATABASE" android:protectionLevel="normal"/>
 
     <application
         android:allowBackup="true"
@@ -19,10 +21,15 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <provider
+            android:authorities="com.himasif.myf.moviecatalogue"
+            android:name=".DB.MovieProvider"
+            android:exported="true"
+            android:readPermission="com.himasif.myf.moviecatalogue.READ_DATABASE"
+            android:writePermission="com.himasif.myf.moviecatalogue.WRITE_DATABASE" />
     </application>
 
 </manifest>
