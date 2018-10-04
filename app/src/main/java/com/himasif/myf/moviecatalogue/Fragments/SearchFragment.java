@@ -48,8 +48,7 @@ public class SearchFragment extends Fragment implements View.OnClickListener, an
     public static final String EXTRA_INPUT = "extra_input";
     private Context mContext;
     private static final String TAG = SearchFragment.class.getSimpleName();
-    public static final String SEARCH_URL = "https://api.themoviedb.org/3/search/movie?api_key=" +
-            BuildConfig.API_KEY + "&language=en-US&query=";
+    private String SEARCH_URL;
 
     public SearchFragment() {
         // Required empty public constructor
@@ -63,6 +62,7 @@ public class SearchFragment extends Fragment implements View.OnClickListener, an
         View view = inflater.inflate(R.layout.fragment_search, container, false);
         ButterKnife.bind(this, view);
         mContext = getContext();
+        SEARCH_URL = String.format(getResources().getString(R.string.search_url), BuildConfig.API_KEY);
 
         adapter = new ListMovieAdapter(mContext);
         adapter.notifyDataSetChanged();
@@ -85,7 +85,8 @@ public class SearchFragment extends Fragment implements View.OnClickListener, an
         if (bundle != null) {
             input = bundle.getString(EXTRA_INPUT);
         }
-        return new DownloadResultAsyncTaskLoader(mContext, input, SEARCH_URL);
+        SEARCH_URL += input;
+        return new DownloadResultAsyncTaskLoader(mContext, SEARCH_URL);
     }
 
     @Override

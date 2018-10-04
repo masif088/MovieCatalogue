@@ -34,7 +34,7 @@ public class UpComingFragment extends Fragment implements LoaderManager.LoaderCa
     @BindView(R.id.rv_upcoming) RecyclerView mRecycleView;
     @BindView(R.id.progress_bar) ProgressBar progressBar;
     private UpComingCardAdapter mUpComingCardAdapter;
-    private String UPCOMING_URL = "https://api.themoviedb.org/3/movie/upcoming?api_key="+ BuildConfig.API_KEY +"&language=en-US";
+    private String UPCOMING_URL;
 
     public UpComingFragment() {
         // Required empty public constructor
@@ -45,6 +45,7 @@ public class UpComingFragment extends Fragment implements LoaderManager.LoaderCa
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_up_coming, container, false);
+        UPCOMING_URL = String.format(getResources().getString(R.string.upcoming_url), BuildConfig.API_KEY);
         ButterKnife.bind(this, view);
         showRecycleCardView();
         getLoaderManager().initLoader(0, null, this);
@@ -59,7 +60,7 @@ public class UpComingFragment extends Fragment implements LoaderManager.LoaderCa
     @NonNull
     @Override
     public android.support.v4.content.Loader<ArrayList<Movie>> onCreateLoader(int id, @Nullable Bundle args) {
-        return new DownloadResultAsyncTaskLoader(getContext(), "", UPCOMING_URL);
+        return new DownloadResultAsyncTaskLoader(getContext(), UPCOMING_URL);
     }
 
     @Override

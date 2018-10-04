@@ -52,11 +52,11 @@ public class MainFragment extends Fragment {
         mAdapter = new ViewPagerAdapter(getChildFragmentManager());
         //Fragment 1
         NowPlayingFragment nowPlayingFragment = new NowPlayingFragment();
-        mAdapter.addFragment(nowPlayingFragment, "Now Playing");
+        mAdapter.addFragment(nowPlayingFragment, getResources().getString(R.string.now_playing));
 
         //Fragment 2
         UpComingFragment upComingFragment = new UpComingFragment();
-        mAdapter.addFragment(upComingFragment, "Upcoming");
+        mAdapter.addFragment(upComingFragment, getResources().getString(R.string.upcoming));
 
         viewPager.setAdapter(mAdapter);
     }

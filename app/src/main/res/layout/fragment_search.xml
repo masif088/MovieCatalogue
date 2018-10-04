@@ -25,7 +25,7 @@
                 android:id="@+id/edt_search"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Movies Title" />
+                android:hint="@string/search_hint" />
         </android.support.design.widget.TextInputLayout>
 
         <Button
@@ -35,7 +35,7 @@
             android:layout_weight="0.8"
             android:background="@drawable/button"
             android:src="@drawable/ic_search_black_24dp"
-            android:text="Cari"
+            android:text="@string/search"
             android:textColor="#fff" />
     </LinearLayout>
 

@@ -20,13 +20,13 @@
                 android:id="@+id/tab_now_playing"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Now Playing" />
+                android:text="@string/now_playing" />
 
             <android.support.design.widget.TabItem
                 android:id="@+id/tab_upcoming"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Upcoming" />
+                android:text="@string/upcoming" />
 
         </android.support.design.widget.TabLayout>
     </android.support.design.widget.AppBarLayout>

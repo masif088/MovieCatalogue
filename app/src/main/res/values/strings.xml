@@ -1,13 +1,28 @@
 <resources>
     <string name="app_name">Movie Catalogue</string>
-    <string name="title_activity_main">MainActivity</string>
-
+    <string name="title_activity_main">Movie Catalogue</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Change Language</string>
+    <string name="now_playing">Now Playing</string>
+    <string name="now_playing_url">https://api.themoviedb.org/3/movie/now_playing?api_key=%s&amp;language=en-US</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello search fragment</string>
+    <string name="upcoming">Upcoming</string>
+    <string name="upcoming_url">https://api.themoviedb.org/3/movie/upcoming?api_key=%s&amp;language=en-US</string>
+
+    <string name="search">Search</string>
+    <string name="search_hint">Movie Title</string>
+    <string name="search_url">https://api.themoviedb.org/3/search/movie?api_key=%s&amp;language=en-US&amp;query=</string>
+
+    <string name="detail">Detail</string>
+    <string name="share">Share</string>
+    <string name="home">Home</string>
+
+    <string name="detail_language">Language : </string>
+    <string name="detail_release_date">Release Date : </string>
+    <string name="detail_overview">Overview : </string>
+    <string name="detail_rating">Rating : </string>
+
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, ius ad deleniti salutandi, pro et alterum labores molestiae, id quo appareat interesset. In qui graeci voluptua. An mei iudico quaestio, etiam dissentiet ea sed. Aeque elitr at pro, invidunt constituto mei et. Vis ex nostrud disputationi.</string>
 </resources>

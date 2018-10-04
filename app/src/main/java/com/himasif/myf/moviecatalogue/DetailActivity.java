@@ -18,12 +18,18 @@ public class DetailActivity extends AppCompatActivity {
     public static final String POSTER_URL_W500 = "http://image.tmdb.org/t/p/w500"; // image for details
     public static final String EXTRA_MOVIE = "extra_movie";
     private Movie movie;
-    @BindView(R.id.img_poster_detail) ImageView imgPoster;
-    @BindView(R.id.tv_title_detail) TextView tvTitle;
-    @BindView(R.id.tv_rating_detail) TextView tvRating;
-    @BindView(R.id.tv_releaseDate_detail) TextView tvReleaseDate;
-    @BindView(R.id.tv_orilang_detail) TextView tvOriLang;
-    @BindView(R.id.tv_overview_detail) TextView tvOverview;
+    @BindView(R.id.img_poster_detail)
+    ImageView imgPoster;
+    @BindView(R.id.tv_title_detail)
+    TextView tvTitle;
+    @BindView(R.id.tv_rating_detail)
+    TextView tvRating;
+    @BindView(R.id.tv_releaseDate_detail)
+    TextView tvReleaseDate;
+    @BindView(R.id.tv_orilang_detail)
+    TextView tvOriLang;
+    @BindView(R.id.tv_overview_detail)
+    TextView tvOverview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,9 +48,9 @@ public class DetailActivity extends AppCompatActivity {
                 .fitCenter()
                 .into(imgPoster);
         tvTitle.setText(movie.getTitle());
-        tvRating.setText("Rating : " + movie.getVoteAvg());
-        tvReleaseDate.setText("Release on : " + movie.getReleaseDate());
-        tvOriLang.setText("Language : " + movie.getOriginalLanguage());
+        tvRating.setText(tvRating.getText().toString() + " " + movie.getVoteAvg());
+        tvReleaseDate.setText(tvReleaseDate.getText().toString() + " " + movie.getReleaseDate());
+        tvOriLang.setText(tvOriLang.getText().toString() + " " + movie.getOriginalLanguage());
         tvOverview.setText(movie.getOverview());
     }
 }

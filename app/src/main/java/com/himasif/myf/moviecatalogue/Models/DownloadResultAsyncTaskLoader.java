@@ -20,14 +20,12 @@ public class DownloadResultAsyncTaskLoader extends AsyncTaskLoader<ArrayList<Mov
 
     private static final String TAG = DownloadResultAsyncTaskLoader.class.getSimpleName();
     private String URL;
-    private String input;
     private boolean hasResult = false;
     private ArrayList<Movie> movieArrayList;
 
-    public DownloadResultAsyncTaskLoader(Context context, String input, String URL) {
+    public DownloadResultAsyncTaskLoader(Context context, String URL) {
         super(context);
         onContentChanged();
-        this.input = input;
         this.URL = URL;
         Log.d(TAG, "DownloadResultAsyncTaskLoader: Constructor");
     }
@@ -64,7 +62,7 @@ public class DownloadResultAsyncTaskLoader extends AsyncTaskLoader<ArrayList<Mov
     public ArrayList<Movie> loadInBackground() {
         SyncHttpClient syncHttpClient = new SyncHttpClient();
         final ArrayList<Movie> movies = new ArrayList<Movie>();
-        String url = URL + input;
+        String url = URL;
         Log.d(TAG, "loadInBackground: URL : " + url);
 
         syncHttpClient.get(url, new AsyncHttpResponseHandler() {

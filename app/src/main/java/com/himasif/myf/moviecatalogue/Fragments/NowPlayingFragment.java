@@ -9,6 +9,7 @@ import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,8 +36,7 @@ public class NowPlayingFragment extends Fragment implements LoaderManager.Loader
     @BindView(R.id.rv_now_playing) RecyclerView mRecyclerView;
     @BindView(R.id.progress_bar) ProgressBar progressBar;
     private static final String TAG = NowPlayingFragment.class.getSimpleName();
-    private String NOW_PLAYING_URL = "https://api.themoviedb.org/3/movie/now_playing?api_key=" +
-            BuildConfig.API_KEY + "&language=en-US";
+    private String NOW_PLAYING_URL;
     private NowPlayingCardAdapter nowPlayingCardAdapter;
     private ArrayList<Movie> mMovieArrayList;
 
@@ -50,6 +50,8 @@ public class NowPlayingFragment extends Fragment implements LoaderManager.Loader
         View view = inflater.inflate(R.layout.fragment_now_playing, container, false);
         ButterKnife.bind(this, view);
         showRecycleCardView();
+        NOW_PLAYING_URL = String.format(getResources().getString(R.string.now_playing_url), BuildConfig.API_KEY);
+        Log.d(TAG, "onCreateView: URL : " + NOW_PLAYING_URL);
         getLoaderManager().initLoader(0, null, this);
         return view;
     }
@@ -62,7 +64,7 @@ public class NowPlayingFragment extends Fragment implements LoaderManager.Loader
     @NonNull
     @Override
     public Loader<ArrayList<Movie>> onCreateLoader(int id, @Nullable Bundle args) {
-        return new DownloadResultAsyncTaskLoader(getContext(), "", NOW_PLAYING_URL);
+        return new DownloadResultAsyncTaskLoader(getContext(), NOW_PLAYING_URL);
     }
 
     @Override

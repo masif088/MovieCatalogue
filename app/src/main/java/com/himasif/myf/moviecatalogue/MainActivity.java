@@ -1,6 +1,8 @@
 package com.himasif.myf.moviecatalogue;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -58,14 +60,12 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.action_change_language) {
+            Intent intent = new Intent(Settings.ACTION_LOCALE_SETTINGS);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);
@@ -79,10 +79,10 @@ public class MainActivity extends AppCompatActivity
         android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
         android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_home) {
             MainFragment mainFragment = new MainFragment();
             fragmentTransaction.replace(R.id.fragment_container, mainFragment);
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_search) {
             SearchFragment searchFragment = new SearchFragment();
             fragmentTransaction.replace(R.id.fragment_container, searchFragment);
         }

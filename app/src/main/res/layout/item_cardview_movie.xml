@@ -79,7 +79,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Detail"
+                android:text="@string/detail"
                 android:textSize="12sp" />
 
             <Button
@@ -88,7 +88,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Share"
+                android:text="@string/share"
                 android:textSize="12sp" />
 
         </LinearLayout>
