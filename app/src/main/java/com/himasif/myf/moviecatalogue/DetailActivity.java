@@ -1,10 +1,13 @@
 package com.himasif.myf.moviecatalogue;
 
+import android.graphics.Color;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
 import com.himasif.myf.moviecatalogue.Models.Movie;
@@ -30,12 +33,18 @@ public class DetailActivity extends AppCompatActivity {
     TextView tvOriLang;
     @BindView(R.id.tv_overview_detail)
     TextView tvOverview;
+    @BindView(R.id.collapsing_toolbar_detail)
+    CollapsingToolbarLayout collapsingToolbarLayout;
+    @BindView(R.id.toolbar)
+    android.support.v7.widget.Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
         ButterKnife.bind(this);
+
+        setSupportActionBar(toolbar);
 
         movie = (Movie) getIntent().getSerializableExtra(EXTRA_MOVIE);
         setAll();
@@ -47,7 +56,9 @@ public class DetailActivity extends AppCompatActivity {
                 .load(POSTER_URL_W500 + movie.getPosterPath())
                 .fitCenter()
                 .into(imgPoster);
-        tvTitle.setText(movie.getTitle());
+        collapsingToolbarLayout.setTitle(movie.getTitle());
+        collapsingToolbarLayout.setCollapsedTitleTextColor(Color.parseColor("#ffffff"));
+//        tvTitle.setText(movie.getTitle());
         tvRating.setText(tvRating.getText().toString() + " " + movie.getVoteAvg());
         tvReleaseDate.setText(tvReleaseDate.getText().toString() + " " + movie.getReleaseDate());
         tvOriLang.setText(tvOriLang.getText().toString() + " " + movie.getOriginalLanguage());
