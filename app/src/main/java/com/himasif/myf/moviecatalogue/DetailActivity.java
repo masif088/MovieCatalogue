@@ -1,10 +1,13 @@
 package com.himasif.myf.moviecatalogue;
 
 import android.graphics.Color;
+import android.os.Build;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toolbar;
@@ -37,6 +40,9 @@ public class DetailActivity extends AppCompatActivity {
     CollapsingToolbarLayout collapsingToolbarLayout;
     @BindView(R.id.toolbar)
     android.support.v7.widget.Toolbar toolbar;
+    @BindView(R.id.fab_detail)
+    FloatingActionButton favFab;
+    private boolean isFavourite;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +52,7 @@ public class DetailActivity extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
 
+        isFavourite = false;
         movie = (Movie) getIntent().getSerializableExtra(EXTRA_MOVIE);
         setAll();
     }
@@ -63,5 +70,19 @@ public class DetailActivity extends AppCompatActivity {
         tvReleaseDate.setText(tvReleaseDate.getText().toString() + " " + movie.getReleaseDate());
         tvOriLang.setText(tvOriLang.getText().toString() + " " + movie.getOriginalLanguage());
         tvOverview.setText(movie.getOverview());
+
+        favFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(isFavourite){
+                    favFab.setImageDrawable(getResources().getDrawable(R.drawable.ic_favorite_border_black_24dp));
+                    isFavourite = false;
+                } else{
+                    favFab.setImageDrawable(getResources().getDrawable(R.drawable.ic_favorite_black_24dp));
+                    isFavourite = true;
+                }
+
+            }
+        });
     }
 }
