@@ -15,15 +15,15 @@ import com.himasif.myf.moviecatalogue.R;
 
 import java.util.ArrayList;
 
-public class ListMovieAdapter extends BaseAdapter{
+public class ListSearchMovieAdapter extends BaseAdapter{
 
-    private static final String TAG = ListMovieAdapter.class.getSimpleName();
+    private static final String TAG = ListSearchMovieAdapter.class.getSimpleName();
     public static final String POSTER_URL_W185 = "http://image.tmdb.org/t/p/w185"; // image for list
     private Context context;
     private LayoutInflater layoutInflater;
     private ArrayList<Movie> movieArrayList;
 
-    public ListMovieAdapter(Context context) {
+    public ListSearchMovieAdapter(Context context) {
         this.context = context;
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }

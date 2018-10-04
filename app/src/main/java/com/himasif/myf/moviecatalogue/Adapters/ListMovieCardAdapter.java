@@ -22,24 +22,24 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * Created by Dul mu'in on 05/09/2018.
+ * Created by Dul mu'in on 05/10/2018.
  */
 
-public class UpComingCardAdapter extends RecyclerView.Adapter<UpComingCardAdapter.CardViewHolder>{
+public class ListMovieCardAdapter extends RecyclerView.Adapter<ListMovieCardAdapter.CardViewHolder> {
 
     private Context mContext;
     private ArrayList<Movie> mMovieArrayList;
     public static final String POSTER_URL_W342 = "http://image.tmdb.org/t/p/w342";
 
-    public UpComingCardAdapter(Context mContext) {
-        this.mContext = mContext;
+    public ListMovieCardAdapter(Context context) {
+        this.mContext = context;
     }
 
     @NonNull
     @Override
     public CardViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_cardview_movie, parent, false);
-        return new CardViewHolder(view);
+        return new ListMovieCardAdapter.CardViewHolder(view);
     }
 
     @Override
@@ -66,18 +66,24 @@ public class UpComingCardAdapter extends RecyclerView.Adapter<UpComingCardAdapte
         return mMovieArrayList.size();
     }
 
-    public void setmMovieArrayList(ArrayList<Movie> mMovieArrayList) {
-        this.mMovieArrayList = mMovieArrayList;
+    public void setmMoviesArrayList(ArrayList<Movie> mMoviesArrayList) {
+        this.mMovieArrayList = mMoviesArrayList;
     }
 
-    class CardViewHolder extends RecyclerView.ViewHolder{
+    class CardViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.tv_title) TextView tvTitle;
-        @BindView(R.id.tv_overview) TextView tvOverview;
-        @BindView(R.id.tv_releaseDate) TextView tvReleaseDate;
-        @BindView(R.id.img_photo) ImageView imgPhoto;
-        @BindView(R.id.btn_detail) Button btnDetail;
-        @BindView(R.id.btn_share) Button btnShare;
+        @BindView(R.id.img_photo)
+        ImageView imgPhoto;
+        @BindView(R.id.tv_title)
+        TextView tvTitle;
+        @BindView(R.id.tv_overview)
+        TextView tvOverview;
+        @BindView(R.id.tv_releaseDate)
+        TextView tvReleaseDate;
+        @BindView(R.id.btn_detail)
+        Button btnDetail;
+        @BindView(R.id.btn_share)
+        Button btnShare;
 
         public CardViewHolder(View itemView) {
             super(itemView);

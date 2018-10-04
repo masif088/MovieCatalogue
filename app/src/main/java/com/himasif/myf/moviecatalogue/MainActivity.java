@@ -12,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.himasif.myf.moviecatalogue.Fragments.FavouriteFragment;
 import com.himasif.myf.moviecatalogue.Fragments.MainFragment;
 import com.himasif.myf.moviecatalogue.Fragments.SearchFragment;
 
@@ -82,6 +83,9 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_home) {
             MainFragment mainFragment = new MainFragment();
             fragmentTransaction.replace(R.id.fragment_container, mainFragment);
+        } else if (id == R.id.nav_fav) {
+            FavouriteFragment favouriteFragment = new FavouriteFragment();
+            fragmentTransaction.replace(R.id.fragment_container, favouriteFragment);
         } else if (id == R.id.nav_search) {
             SearchFragment searchFragment = new SearchFragment();
             fragmentTransaction.replace(R.id.fragment_container, searchFragment);

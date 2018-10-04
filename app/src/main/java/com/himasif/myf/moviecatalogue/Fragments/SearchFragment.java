@@ -17,7 +17,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
-import com.himasif.myf.moviecatalogue.Adapters.ListMovieAdapter;
+import com.himasif.myf.moviecatalogue.Adapters.ListSearchMovieAdapter;
 import com.himasif.myf.moviecatalogue.BuildConfig;
 import com.himasif.myf.moviecatalogue.DetailActivity;
 import com.himasif.myf.moviecatalogue.Models.DownloadResultAsyncTaskLoader;
@@ -44,7 +44,7 @@ public class SearchFragment extends Fragment implements View.OnClickListener, an
     @BindView(R.id.progress_bar)
     ProgressBar progressBar;
 
-    private ListMovieAdapter adapter;
+    private ListSearchMovieAdapter adapter;
     public static final String EXTRA_INPUT = "extra_input";
     private Context mContext;
     private static final String TAG = SearchFragment.class.getSimpleName();
@@ -64,7 +64,7 @@ public class SearchFragment extends Fragment implements View.OnClickListener, an
         mContext = getContext();
         SEARCH_URL = String.format(getResources().getString(R.string.search_url), BuildConfig.API_KEY);
 
-        adapter = new ListMovieAdapter(mContext);
+        adapter = new ListSearchMovieAdapter(mContext);
         adapter.notifyDataSetChanged();
         progressBar.setVisibility(View.GONE);
 

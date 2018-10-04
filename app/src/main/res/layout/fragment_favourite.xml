@@ -2,10 +2,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.himasif.myf.moviecatalogue.FavouriteFragment">
+    tools:context="com.himasif.myf.moviecatalogue.Fragments.FavouriteFragment">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_now_playing"
+    <ListView
+        android:id="@+id/lv_favourite"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:listitem="@layout/item_cardview_movie"/>

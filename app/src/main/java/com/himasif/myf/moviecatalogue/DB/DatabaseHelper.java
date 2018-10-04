@@ -21,7 +21,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     "%s TEXT NOT NULL," +
                     "%s INT NOT NULL," +
                     "%s TEXT NOT NULL," +
-                    "%s TEXT NOT NULL" +
+                    "%s TEXT NOT NULL," +
                     "%s TEXT NOT NULL)",
             TABLE_FAVOURITE,
             FavouriteColumn.MOVIE_ID,

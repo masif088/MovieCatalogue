@@ -15,9 +15,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
-import com.himasif.myf.moviecatalogue.Adapters.NowPlayingCardAdapter;
+import com.himasif.myf.moviecatalogue.Adapters.ListMovieCardAdapter;
 import com.himasif.myf.moviecatalogue.BuildConfig;
-import com.himasif.myf.moviecatalogue.DetailActivity;
 import com.himasif.myf.moviecatalogue.Models.DownloadResultAsyncTaskLoader;
 import com.himasif.myf.moviecatalogue.Models.Movie;
 import com.himasif.myf.moviecatalogue.R;
@@ -37,7 +36,7 @@ public class NowPlayingFragment extends Fragment implements LoaderManager.Loader
     @BindView(R.id.progress_bar) ProgressBar progressBar;
     private static final String TAG = NowPlayingFragment.class.getSimpleName();
     private String NOW_PLAYING_URL;
-    private NowPlayingCardAdapter nowPlayingCardAdapter;
+    private ListMovieCardAdapter nowPlayingCardAdapter;
     private ArrayList<Movie> mMovieArrayList;
 
     public NowPlayingFragment() {
@@ -58,7 +57,7 @@ public class NowPlayingFragment extends Fragment implements LoaderManager.Loader
 
     private void showRecycleCardView(){
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        nowPlayingCardAdapter = new NowPlayingCardAdapter(getContext());
+        nowPlayingCardAdapter = new ListMovieCardAdapter(getContext());
     }
 
     @NonNull

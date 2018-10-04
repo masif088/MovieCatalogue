@@ -14,7 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
-import com.himasif.myf.moviecatalogue.Adapters.UpComingCardAdapter;
+import com.himasif.myf.moviecatalogue.Adapters.ListMovieCardAdapter;
 import com.himasif.myf.moviecatalogue.BuildConfig;
 import com.himasif.myf.moviecatalogue.Models.DownloadResultAsyncTaskLoader;
 import com.himasif.myf.moviecatalogue.Models.Movie;
@@ -33,7 +33,7 @@ public class UpComingFragment extends Fragment implements LoaderManager.LoaderCa
 
     @BindView(R.id.rv_upcoming) RecyclerView mRecycleView;
     @BindView(R.id.progress_bar) ProgressBar progressBar;
-    private UpComingCardAdapter mUpComingCardAdapter;
+    private ListMovieCardAdapter mUpComingCardAdapter;
     private String UPCOMING_URL;
 
     public UpComingFragment() {
@@ -53,7 +53,7 @@ public class UpComingFragment extends Fragment implements LoaderManager.LoaderCa
     }
 
     private void showRecycleCardView(){
-        mUpComingCardAdapter = new UpComingCardAdapter(getContext());
+        mUpComingCardAdapter = new ListMovieCardAdapter(getContext());
         mRecycleView.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 
@@ -65,13 +65,13 @@ public class UpComingFragment extends Fragment implements LoaderManager.LoaderCa
 
     @Override
     public void onLoadFinished(@NonNull android.support.v4.content.Loader<ArrayList<Movie>> loader, ArrayList<Movie> data) {
-        mUpComingCardAdapter.setmMovieArrayList(data);
+        mUpComingCardAdapter.setmMoviesArrayList(data);
         mRecycleView.setAdapter(mUpComingCardAdapter);
         progressBar.setVisibility(View.INVISIBLE);
     }
 
     @Override
     public void onLoaderReset(@NonNull android.support.v4.content.Loader<ArrayList<Movie>> loader) {
-        mUpComingCardAdapter.setmMovieArrayList(null);
+        mUpComingCardAdapter.setmMoviesArrayList(null);
     }
 }
