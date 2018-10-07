@@ -4,11 +4,13 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.himasif.myf.moviecatalogue.Models.Movie;
 
 import java.util.ArrayList;
 
+import static android.support.constraint.Constraints.TAG;
 import static com.himasif.myf.moviecatalogue.DB.DatabaseContract.*;
 
 /**
@@ -57,6 +59,29 @@ public class MovieHelper {
         return list;
     }
 
+    public Movie getMovie(int id){
+        Cursor cursor = sqLiteDatabase.query(TABLE, null, FavouriteColumn.MOVIE_ID + " = ?", new String[]{id+""}, null, null, null, null);
+        return getMovie(cursor);
+    }
+
+    public Movie getMovie(Cursor cursor){
+        Movie movie = null;
+        cursor.moveToFirst();
+        if(cursor.getCount() > 0) {
+            movie = new Movie();
+            movie.setIdMovie(cursor.getInt(cursor.getColumnIndexOrThrow(FavouriteColumn.MOVIE_ID)));
+            movie.setTitle(cursor.getString(cursor.getColumnIndexOrThrow(FavouriteColumn.TITLE)));
+            movie.setOriginalLanguage(cursor.getString(cursor.getColumnIndexOrThrow(FavouriteColumn.LANGUAGE)));
+            movie.setVoteAvg(cursor.getInt(cursor.getColumnIndexOrThrow(FavouriteColumn.RATING)));
+            movie.setReleaseDate(cursor.getString(cursor.getColumnIndexOrThrow(FavouriteColumn.RELEASE_DATE)));
+            movie.setOverview(cursor.getString(cursor.getColumnIndexOrThrow(FavouriteColumn.OVERVIEW)));
+            movie.setPosterPath(cursor.getString(cursor.getColumnIndexOrThrow(FavouriteColumn.IMAGE_PATH)));
+            Log.d(TAG, "getMovie: Movie Helper poster : " + movie.getPosterPath());
+        }
+
+        return movie;
+    }
+
     public long insert(Movie movie){
         ContentValues contentValues = new ContentValues();
         contentValues.put(FavouriteColumn.MOVIE_ID, movie.getIdMovie());
@@ -66,7 +91,7 @@ public class MovieHelper {
         contentValues.put(FavouriteColumn.RELEASE_DATE, movie.getReleaseDate());
         contentValues.put(FavouriteColumn.OVERVIEW, movie.getOverview());
         contentValues.put(FavouriteColumn.IMAGE_PATH, movie.getPosterPath());
-
+        Log.d(TAG, "insert: poster : " + movie.getPosterPath());
         return sqLiteDatabase.insert(TABLE, null, contentValues);
     }
 

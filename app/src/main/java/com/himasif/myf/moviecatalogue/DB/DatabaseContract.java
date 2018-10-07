@@ -9,10 +9,10 @@ import android.provider.BaseColumns;
  */
 
 public class DatabaseContract {
-    public static String TABLE_FAVOURITE = "favourite_movie";
+    public static String TABLE_FAVOURITE = "favourite_movies";
 
     public static final class FavouriteColumn implements BaseColumns {
-        public static final String MOVIE_ID = "movie_id";
+        public static final String MOVIE_ID = _ID;
         public static final String TITLE = "title";
         public static final String LANGUAGE = "language";
         public static final String RATING = "rating";

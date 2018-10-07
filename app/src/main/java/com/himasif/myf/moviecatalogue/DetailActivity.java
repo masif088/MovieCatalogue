@@ -10,9 +10,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
+import com.himasif.myf.moviecatalogue.DB.MovieHelper;
 import com.himasif.myf.moviecatalogue.Models.Movie;
 
 import butterknife.BindView;
@@ -43,17 +45,19 @@ public class DetailActivity extends AppCompatActivity {
     @BindView(R.id.fab_detail)
     FloatingActionButton favFab;
     private boolean isFavourite;
+    private MovieHelper helper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
         ButterKnife.bind(this);
-
+        helper = new MovieHelper(this);
+        helper.open();
         setSupportActionBar(toolbar);
 
-        isFavourite = false;
         movie = (Movie) getIntent().getSerializableExtra(EXTRA_MOVIE);
+        isFavourite = helper.getMovie(movie.getIdMovie()) != null;
         setAll();
     }
 
@@ -65,24 +69,35 @@ public class DetailActivity extends AppCompatActivity {
                 .into(imgPoster);
         collapsingToolbarLayout.setTitle(movie.getTitle());
         collapsingToolbarLayout.setCollapsedTitleTextColor(Color.parseColor("#ffffff"));
-//        tvTitle.setText(movie.getTitle());
+        tvTitle.setText(movie.getTitle());
         tvRating.setText(tvRating.getText().toString() + " " + movie.getVoteAvg());
         tvReleaseDate.setText(tvReleaseDate.getText().toString() + " " + movie.getReleaseDate());
         tvOriLang.setText(tvOriLang.getText().toString() + " " + movie.getOriginalLanguage());
         tvOverview.setText(movie.getOverview());
+        favFab.setImageDrawable(isFavourite ? getResources().getDrawable(R.drawable.ic_favorite_black_24dp) : getResources().getDrawable(R.drawable.ic_favorite_border_black_24dp));
 
         favFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(isFavourite){
+                    helper.delete(movie.getIdMovie());
                     favFab.setImageDrawable(getResources().getDrawable(R.drawable.ic_favorite_border_black_24dp));
+                    Toast.makeText(DetailActivity.this, "Remove From Favorite", Toast.LENGTH_SHORT).show();
                     isFavourite = false;
                 } else{
+                    helper.insert(movie);
                     favFab.setImageDrawable(getResources().getDrawable(R.drawable.ic_favorite_black_24dp));
+                    Toast.makeText(DetailActivity.this, "Add To Favorite", Toast.LENGTH_SHORT).show();
                     isFavourite = true;
                 }
 
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        helper.close();
     }
 }

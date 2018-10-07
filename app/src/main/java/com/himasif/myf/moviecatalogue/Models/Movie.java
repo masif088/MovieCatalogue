@@ -28,6 +28,7 @@ public class Movie implements Serializable {
 
         try {
             this.title = jsonObject.getString("title");
+            this.idMovie = jsonObject.getInt("id");
             this.overview = jsonObject.getString("overview");
             this.voteAvg = jsonObject.getInt("vote_average");
             this.originalLanguage = jsonObject.getString("original_language");
@@ -62,6 +63,7 @@ public class Movie implements Serializable {
         this.originalLanguage = getColumnString(cursor, FavouriteColumn.LANGUAGE);
         this.releaseDate = getColumnString(cursor, FavouriteColumn.RELEASE_DATE);
         this.posterPath = getColumnString(cursor, FavouriteColumn.IMAGE_PATH);
+        Log.d(TAG, "Movie: DB Poster : " + posterPath);
     }
 
     public String getTitle() {
