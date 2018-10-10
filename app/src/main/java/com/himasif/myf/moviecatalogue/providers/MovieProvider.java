@@ -1,4 +1,4 @@
-package com.himasif.myf.moviecatalogue.DB;
+package com.himasif.myf.moviecatalogue.providers;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;
@@ -7,6 +7,8 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+
+import com.himasif.myf.moviecatalogue.DB.MovieHelper;
 
 import static com.himasif.myf.moviecatalogue.DB.DatabaseContract.*;
 
