@@ -13,7 +13,7 @@ import static com.himasif.myf.moviecatalogue.DB.DatabaseContract.*;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static String DATABASE_NAME = "db_movie_catalogue";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     private static String CREATE_TABLE_FAVOURITE_MOVIE = String.format(
             "CREATE TABLE %s (" +
                     "%s INTEGER PRIMARY KEY AUTOINCREMENT," +

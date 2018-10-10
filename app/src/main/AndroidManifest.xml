@@ -26,7 +26,7 @@
         </activity>
         <provider
             android:authorities="com.himasif.myf.moviecatalogue"
-            android:name=".DB.MovieProvider"
+            android:name=".providers.MovieProvider"
             android:exported="true"
             android:readPermission="com.himasif.myf.moviecatalogue.READ_DATABASE"
             android:writePermission="com.himasif.myf.moviecatalogue.WRITE_DATABASE" />
