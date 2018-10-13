@@ -9,6 +9,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -16,8 +17,17 @@ import com.himasif.myf.moviecatalogue.Fragments.FavouriteFragment;
 import com.himasif.myf.moviecatalogue.Fragments.MainFragment;
 import com.himasif.myf.moviecatalogue.Fragments.SearchFragment;
 
+import java.io.Serializable;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private MainFragment mainFragment;
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,12 +35,15 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        MainFragment mainFragment = new MainFragment();
+        mainFragment = new MainFragment();
         android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
         android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_container, mainFragment);
+        Log.d("Activity", "onCreate: " + (savedInstanceState != null));
+        if(savedInstanceState == null){
+            fragmentTransaction.replace(R.id.fragment_container, mainFragment);
+        }
         fragmentTransaction.commit();
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(

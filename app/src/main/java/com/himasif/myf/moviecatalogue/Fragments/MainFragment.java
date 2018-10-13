@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,8 @@ import android.view.ViewGroup;
 import com.himasif.myf.moviecatalogue.R;
 
 import java.util.ArrayList;
+
+import static android.support.constraint.Constraints.TAG;
 
 
 /**
@@ -25,16 +28,22 @@ public class MainFragment extends Fragment {
 
     private ViewPager mViewPager;
     private ViewPagerAdapter mAdapter;
+    public static final String EXTRA_MOVIES_LIST = "extra_movies_list";
 
     public MainFragment() {
         // Required empty public constructor
     }
 
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
         View view = inflater.inflate(R.layout.fragment_main, container, false);
         return view;
     }
@@ -45,6 +54,7 @@ public class MainFragment extends Fragment {
         mViewPager = (ViewPager) view.findViewById(R.id.view_pager_container);
         TabLayout mTabLayout = (TabLayout) view.findViewById(R.id.main_tab_layout);
         mTabLayout.setupWithViewPager(mViewPager);
+
         setupViewPager(mViewPager);
     }
 

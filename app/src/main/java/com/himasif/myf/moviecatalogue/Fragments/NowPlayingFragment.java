@@ -2,6 +2,7 @@ package com.himasif.myf.moviecatalogue.Fragments;
 
 
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -39,8 +40,15 @@ public class NowPlayingFragment extends Fragment implements LoaderManager.Loader
     private ListMovieCardAdapter nowPlayingCardAdapter;
     private ArrayList<Movie> mMovieArrayList;
 
+
     public NowPlayingFragment() {
         // Required empty public constructor
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        outState.putSerializable(MainFragment.EXTRA_MOVIES_LIST, mMovieArrayList);
+        super.onSaveInstanceState(outState);
     }
 
     @Override
@@ -49,9 +57,18 @@ public class NowPlayingFragment extends Fragment implements LoaderManager.Loader
         View view = inflater.inflate(R.layout.fragment_now_playing, container, false);
         ButterKnife.bind(this, view);
         showRecycleCardView();
-        NOW_PLAYING_URL = String.format(getResources().getString(R.string.now_playing_url), BuildConfig.API_KEY);
-        Log.d(TAG, "onCreateView: URL : " + NOW_PLAYING_URL);
-        getLoaderManager().initLoader(0, null, this);
+        Log.d(TAG, "onCreateView: called");
+        if (savedInstanceState != null){
+            mMovieArrayList = (ArrayList<Movie>) savedInstanceState.getSerializable(MainFragment.EXTRA_MOVIES_LIST);
+            nowPlayingCardAdapter.setmMoviesArrayList(mMovieArrayList);
+            mRecyclerView.setAdapter(nowPlayingCardAdapter);
+            progressBar.setVisibility(View.INVISIBLE);
+            Log.d(TAG, "onCreateView: Saved Instanced " + mMovieArrayList);
+        } else{
+            NOW_PLAYING_URL = String.format(getResources().getString(R.string.now_playing_url), BuildConfig.API_KEY);
+            getLoaderManager().initLoader(0, null, this);
+            Log.d(TAG, "onCreateView: Init Loader");
+        }
         return view;
     }
 
