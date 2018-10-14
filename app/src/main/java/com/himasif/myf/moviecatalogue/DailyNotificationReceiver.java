@@ -45,7 +45,7 @@ public class DailyNotificationReceiver extends BroadcastReceiver {
 
         Uri alarmRingtone = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
-                .setSmallIcon(R.drawable.ic_favorite_black_24dp)
+                .setSmallIcon(R.drawable.ic_notifications_black_24dp)
                 .setContentTitle(title)
                 .setContentText(message)
                 .setContentIntent(pendingIntent)

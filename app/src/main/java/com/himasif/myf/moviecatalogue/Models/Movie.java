@@ -23,6 +23,7 @@ public class Movie implements Serializable {
     private int voteAvg;
     private String originalLanguage;
     private int idMovie;
+    private String dateRaw;
 
     public Movie(JSONObject jsonObject) {
 
@@ -33,7 +34,8 @@ public class Movie implements Serializable {
             this.voteAvg = jsonObject.getInt("vote_average");
             this.originalLanguage = jsonObject.getString("original_language");
             this.posterPath = jsonObject.getString("poster_path");
-            String dateRaw = jsonObject.getString("release_date");
+//            this.dateRaw = "2018-10-15";
+            this.dateRaw = jsonObject.getString("release_date");
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
             try {
                 Date date = format.parse(dateRaw);
@@ -120,5 +122,13 @@ public class Movie implements Serializable {
 
     public void setOriginalLanguage(String originalLanguage) {
         this.originalLanguage = originalLanguage;
+    }
+
+    public void setDateRaw(String dateRaw) {
+        this.dateRaw = dateRaw;
+    }
+
+    public String getDateRaw() {
+        return dateRaw;
     }
 }
