@@ -3,6 +3,8 @@
     package="com.himasif.myf.moviecatalogue">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
 
     <permission
         android:name="com.himasif.myf.moviecatalogue.READ_DATABASE"
@@ -49,11 +51,19 @@
                 android:resource="@xml/stack_movie_widet_info" />
         </receiver>
 
+        <receiver android:name=".DailyNotificationReceiver"
+            android:enabled="true"
+            android:exported="false"/>
+
         <service
             android:name=".Widgets.StackWidgetService"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
 
-        <activity android:name=".SettingsActivity"></activity>
+        <activity android:name=".SettingsActivity" />
+
+        <service
+            android:name=".NotificationService"
+            android:exported="false"></service>
     </application>
 
 </manifest>

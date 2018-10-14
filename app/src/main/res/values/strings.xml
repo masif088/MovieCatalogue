@@ -38,4 +38,7 @@
     <string name="pref_switch_daily_reminder">daily_reminder</string>
     <string name="pref_switch_release_reminder">release_reminder</string>
     <string name="pref_btn_change_lang">change_lang</string>
+
+    <string name="daily_reminder_text">Why not looking for your favourite movies here?</string>
+    <string name="is_daily_reminder_active">false</string>
 </resources>
