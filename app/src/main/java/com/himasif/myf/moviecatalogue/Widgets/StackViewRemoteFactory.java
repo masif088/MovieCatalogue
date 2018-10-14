@@ -1,4 +1,4 @@
-package com.himasif.myf.moviecatalogue;
+package com.himasif.myf.moviecatalogue.Widgets;
 
 import android.appwidget.AppWidgetManager;
 import android.content.Context;
@@ -16,6 +16,8 @@ import com.himasif.myf.moviecatalogue.DB.DatabaseContract;
 import com.himasif.myf.moviecatalogue.Models.Movie;
 
 import com.bumptech.glide.request.target.Target;
+import com.himasif.myf.moviecatalogue.R;
+
 import java.util.ArrayList;
 
 import static android.support.constraint.Constraints.TAG;

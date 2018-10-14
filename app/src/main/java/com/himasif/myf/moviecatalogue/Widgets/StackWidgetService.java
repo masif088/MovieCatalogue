@@ -1,4 +1,4 @@
-package com.himasif.myf.moviecatalogue;
+package com.himasif.myf.moviecatalogue.Widgets;
 
 import android.content.Intent;
 import android.widget.RemoteViewsService;

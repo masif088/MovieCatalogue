@@ -1,4 +1,4 @@
-package com.himasif.myf.moviecatalogue;
+package com.himasif.myf.moviecatalogue.Widgets;
 
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.widget.RemoteViews;
 import android.widget.Toast;
+
+import com.himasif.myf.moviecatalogue.R;
 
 /**
  * Implementation of App Widget functionality.

@@ -18,4 +18,12 @@
             android:title="@string/search" />
     </group>
 
+    <item android:title="Other">
+        <menu>
+            <item
+                android:id="@+id/nav_setting"
+                android:icon="@drawable/ic_settings_black_24dp"
+                android:title="@string/settings" />
+        </menu>
+    </item>
 </menu>
