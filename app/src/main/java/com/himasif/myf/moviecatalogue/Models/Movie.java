@@ -34,7 +34,6 @@ public class Movie implements Serializable {
             this.voteAvg = jsonObject.getInt("vote_average");
             this.originalLanguage = jsonObject.getString("original_language");
             this.posterPath = jsonObject.getString("poster_path");
-//            this.dateRaw = "2018-10-15";
             this.dateRaw = jsonObject.getString("release_date");
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
             try {

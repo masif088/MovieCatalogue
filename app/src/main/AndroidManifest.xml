@@ -55,15 +55,15 @@
             android:enabled="true"
             android:exported="false"/>
 
+        <receiver android:name=".ReleaseNotificationReceiver"
+            android:enabled="true"
+            android:exported="true"/>
+
         <service
             android:name=".Widgets.StackWidgetService"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
 
         <activity android:name=".SettingsActivity" />
-
-        <service
-            android:name=".NotificationService"
-            android:exported="false"></service>
     </application>
 
 </manifest>

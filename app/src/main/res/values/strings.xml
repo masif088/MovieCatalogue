@@ -35,7 +35,7 @@
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
 
-    <string name="pref_switch_daily_reminder">daily_reminder</string>
+    <string name="pref_switch_daily_reminder">false</string>
     <string name="pref_switch_release_reminder">release_reminder</string>
     <string name="pref_btn_change_lang">change_lang</string>
 

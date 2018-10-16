@@ -25,6 +25,7 @@ import com.himasif.myf.moviecatalogue.BuildConfig;
 import com.himasif.myf.moviecatalogue.DB.MovieHelper;
 import com.himasif.myf.moviecatalogue.DailyNotificationReceiver;
 import com.himasif.myf.moviecatalogue.MainActivity;
+import com.himasif.myf.moviecatalogue.Models.AppPreference;
 import com.himasif.myf.moviecatalogue.Models.Movie;
 import com.himasif.myf.moviecatalogue.R;
 import com.himasif.myf.moviecatalogue.ReleaseNotificationReceiver;
@@ -97,23 +98,31 @@ public class SettingsFragment extends PreferenceFragmentCompat implements androi
     public boolean onPreferenceChange(android.support.v7.preference.Preference preference, Object newValue) {
         String pref = preference.getKey();
         boolean isActive = (boolean) newValue;
+        Context context = getContext();
+        AppPreference appPreference = new AppPreference(context);
 
         if(pref.equals(getResources().getString(R.string.pref_switch_daily_reminder))){
-            DailyNotificationReceiver dailyNotificationReceiver = new DailyNotificationReceiver();
+//            DailyNotificationReceiver dailyNotificationReceiver = new DailyNotificationReceiver();
             if(isActive){
-                dailyNotificationReceiver.setRepeatingAlarm(getContext());
+                appPreference.setDailyNotification(true);
+//                dailyNotificationReceiver.setRepeatingAlarm(getContext());
             } else {
-                dailyNotificationReceiver.cancelAlarm(getContext());
+                appPreference.setDailyNotification(false);
+//                dailyNotificationReceiver.cancelAlarm(getContext());
             }
         } else{
             releaseNotificationReceiver = new ReleaseNotificationReceiver();
             if(isActive){
-                getMoviesNowPlaying();
+                appPreference.setReleaseyNotification(true);
+//                getMoviesNowPlaying();
 //                releaseNotificationReceiver.setRepeatingAlarm(getContext(), movieArrayList);
             } else {
-                releaseNotificationReceiver.cancelAlarm(getContext());
+                appPreference.setReleaseyNotification(false);
+//                releaseNotificationReceiver.cancelAlarm(getContext());
             }
         }
+        Log.d(TAG, "onPreferenceChange: AppPreference : D " + appPreference.getDailyNotification());
+        Log.d(TAG, "onPreferenceChange: AppPreference : R " + appPreference.getReleaseNotification());
         return true;
     }
 
