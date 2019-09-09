@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">Movie Catalogue Final</string>
+    <string name="settings">Pengaturan</string>
+    <string name="tv_show">Siaran Tv</string>
+    <string name="movie">Film</string>
+    <string name="favorite">Kesukaan</string>
+    <string name="release_date">Tanggal Rilis</string>
+    <string name="overview">Sinopsis</string>
+    <string name="footer">Bagian Bawah</string>
+    <string name="backdrop">Backdrop</string>
+    <string name="poster">Poster</string>
+    <string name="setting_language">Pengaturan Bahasa</string>
+    <string name="setup">Atur</string>
+    <string name="setting_layout">Pengaturan Tampilan</string>
+    <array name="fav">
+        <item>@drawable/ic_favorite_fill</item>
+        <item>@drawable/ic_favorite_border</item>
+    </array>
+    <string-array name="view_pager">
+        <item>Film</item>
+        <item>Siaran Tv</item>
+    </string-array>
+    <string-array name="layout">
+        <item>List Layout</item>
+        <item>Grid Layout</item>
+    </string-array>
+
+    <string-array name="add_remove">
+        <item>Berhasil menambahakan ke kesukaan</item>
+        <item>Berhasil menghapus dari kesukaan</item>
+    </string-array>
+    <string name="daily">Notifikasi Harian</string>
+    <string name="release">Notifikasi Film Baru</string>
+    <string name="daily_reminder_title">Pengingat Harian</string>
+    <string name="daily_reminder_message">selamat pagi tuan, jangan lupa mengecek film terbaru kesukaan anda</string>
+    <string name="release__reminder_title">Pengingat Rilis</string>
+    <string name="release__reminder_message">Telah Rilis</string>
+    <string name="release__reminder_bad_message">Berita buruk, hari ini tidak ada yang rilis :( </string>
+</resources>

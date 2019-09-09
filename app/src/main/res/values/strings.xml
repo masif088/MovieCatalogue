@@ -1,0 +1,43 @@
+<resources>
+    <string name="app_name">Movie Catalogue Final</string>
+    <string name="settings">Settings</string>
+    <string name="tv_show">TV Show</string>
+    <string name="movie">Movie</string>
+    <string name="favorite">Favorite</string>
+    <string name="release_date">Release Date</string>
+    <string name="overview">Overview</string>
+    <string name="footer">Footer</string>
+    <string name="backdrop">Backdrop</string>
+    <string name="poster">Poster</string>
+    <string name="setting_language">Setting Language</string>
+    <string name="setup">Setup</string>
+    <string name="setting_layout">Setting Layout</string>
+    <array name="fav">
+        <item>@drawable/ic_favorite_fill</item>
+        <item>@drawable/ic_favorite_border</item>
+    </array>
+    <string-array name="view_pager">
+        <item>Movie</item>
+        <item>Tv Show</item>
+    </string-array>
+    <string-array name="layout">
+        <item>List Layout</item>
+        <item>Grid Layout</item>
+    </string-array>
+    <string-array name="add_remove">
+        <item>Success add to favorite</item>
+        <item>Success remove from favorite</item>
+    </string-array>
+    <string name="appwidget_text" translatable="false">widget</string>
+    <!--<string name="appwidget_text" translatable="false">STAR WARS BANNER</string>-->
+    <string name="add_widget" translatable="false">Add widget</string>
+    <string name="empty_text" translatable="false">NO DATA</string>
+    <string name="daily">Daily Reminder Notification</string>
+    <string name="release">Daily Release Notification</string>
+    <string name="daily_reminder_title">Daily Reminder</string>
+    <string name="daily_reminder_message">Good morning sir, dont forget to check your latest favorite movie</string>
+    <string name="release__reminder_title">Release Reminder</string>
+    <string name="release__reminder_message">has been released</string>
+    <string name="release__reminder_bad_message">Bad new, nothing released today :( </string>
+
+</resources>

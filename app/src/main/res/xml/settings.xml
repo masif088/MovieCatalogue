@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <SwitchPreference
+        android:key="reminder"
+        android:title="@string/daily"/>
+    <SwitchPreference
+        android:key="release"
+        android:title="@string/release"/>
+    <ListPreference
+        android:title="@string/setting_layout"
+        android:key="layout"
+        android:entries="@array/layout"
+        android:entryValues="@array/layout"/>
+    <Preference
+        android:key="language"
+        android:title="@string/setting_language"/>
+</PreferenceScreen>
